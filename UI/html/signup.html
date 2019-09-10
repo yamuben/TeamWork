@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    <!-- Metadata -->
+<meta name="description" content="internal social network TeamWork">
+<meta name="author" content="Benjamin Yamu">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS Styles -->
+<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+
+    <!-- Javascript  -->
+ <script type="text/javascript" src="../js/scripts.js"></script>
+</head>
+<body>
+
+
+<!------ all navigation for mobile and large screen------>
+<div class="mobnav">
+    <span class="mob-menu-icon" style="font-size:30px;cursor:pointer" onclick="openNav()">☰</span>
+    <div class="mob-logo">
+    <img class="main-logo" src="../img/logo.png">
+  </div>
+  </div>
+          
+
+          <nav class="navbar">
+            <ul class="topnav">
+                <li>
+                        
+                    <li><a class="menulink" href="../index.html">Home</a></li>
+                </li>
+               
+                 <a  href="index.html">  <img class="main-logo" src="../img/logo.png"> </a>
+              </ul>
+              
+          </nav>
+
+  
+  <!--        <<<<<<<<<<<<<<<<<<<<<<<<< responsive>>>>>>>>>>>>>>>>>>>.-->
+          
+
+          <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                
+                    <hr class="menu-separtor">
+                    <a href="../index.html">Logout</a>
+               
+              </div>
+
+
+
+      
+         
+<!-- ############## signup form div ################# -->
+<div class="centered-form" >
+        <form >
+          <h2>Create Account</h2>
+          <input type="text" placeholder="First Name" id="fname" class="form-input txtb" required>
+          <input type="text" placeholder="Last Name" id="lname" class="form-input txtb" required>
+          <input type="text" placeholder="Email" id="email" class="form-input txtb" required>
+          <input type="password" placeholder="Password" class="form-input txtb"id="pswd" required>
+          <input type="text" placeholder="Gender" id="gender" class="form-input txtb" required>
+          <input type="text" placeholder="Job Role" id="jobrole" class="form-input txtb" required>
+          <input type="text" placeholder="Department" id="department" class="form-input txtb" required>
+          <input type="text" placeholder="Address" id="address" class="form-input txtb" required>
+          <input type="submit" value="Create" class="btn form-input btn-js" onclick="check()" >
+
+          <a class="link"  onclick="viewarticlee()"  >Already have account ?</a>
+        </form>
+      </div>
+<!-- ################################ -->
+
+<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+
+
+
+  <!-- View a Specific articlee -->
+  <div class="modal-view">
+      <div class="create-articlee-modal create-articlee-modal-js">
+         
+ 
+                               <!-- ############################### -->
+                 <div class="centered-form">
+                   <form action="./user/home.html" >
+                     <h2>LOGIN  <label class="closeDialog" style="float: right" onclick="closeModalView()">&times;</label></h2>
+                     <input type="text" placeholder="Username or Email" id="email" class="form-input txtb" required>
+                     <input type="password" placeholder="Password" class="form-input txtb"id="pswd" required>
+                     <input type="submit" value="Signin" class="btn form-input btn-js" >
+                     <div class="form-checkbox">
+                     <input class="form-checkbox" type="checkbox" /><label class="checkbox-label">Keep me signed in</label> 
+                   </div>
+                     <a class="link" href="./signup.html">Don't have account yet ?</a>
+                   </form>
+                 </div>
+    
+              
+         
+  </div>   
+  </div>
+
+<div></div>
+  <div class="footer">
+      <p id="pd">&copy;2019 All Right reserved</p>
+  </div>
+
+</body>
+
+
+</html>
