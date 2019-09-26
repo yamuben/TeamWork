@@ -5,7 +5,7 @@ import verifytoken from '../helpers/tokens';
 
 
 const articles = [];
-
+const comments = [];
 
 
 dotenv.config();
@@ -57,6 +57,36 @@ class articleController {
         },
       });
     };
+
+
+    // ................................................
+
+static delete_article = (req, res) => {
+  let { articleId } = req.params;
+  articleId = articleId.trim();
+
+
+  const token = req.header('user-auth-token');
+  const decode = verifytoken.verifyToken(token);
+
+  const article = articles.find(a => a.id === parseInt(articleId, 10));
+  const index = articles.indexOf(article);
+  // console.log('...................');
+  // console.log(article);
+  const artIdExist = articles.find(i => (i.id === index + 1) && (i.authorId === decode.Id));
+  if (!artIdExist) {
+    return res.status(404).send({ status: 404, error: 'Id is not found !' });
+  }
+  articles.splice(index, 1);
+
+  // console.log(articles);
+
+  articles.sort((a, b) => b.date_integer - a.date_integer);
+  return res.status(201).json({
+    status: 201,
+    message: 'article SUCCESFULLY DELETED',
+  });
+};
 
 }
 export default { articleController, articles };
