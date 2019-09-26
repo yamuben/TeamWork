@@ -11,7 +11,11 @@ const Helper = {
     return token;
   },
 
+  verifyToken(token) {
+    const mytoken = jwt.verify(token, process.env.teamwork_scretkey);
 
+    return mytoken;
+  },
 };
 
 export default Helper;
