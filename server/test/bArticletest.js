@@ -216,3 +216,30 @@ describe('GET User will be able to view all articles, api/v1/feeds', () => {
       });
   });
 });
+
+describe('GET User will be able to view specific articles, api/v1/articles/3', () => {
+  it('should return article article SUCCESFULLY Edited', (done) => {
+    chai.request(app)
+      .get('/api/v1/articles/1')
+      .set('user-auth-token', token)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal(200);
+        done();
+      });
+  });
+});
+describe('GET User will be able to view specific articles, api/v1/articles/3', () => {
+  it('should return article article SUCCESFULLY Edited', (done) => {
+    chai.request(app)
+      .get('/api/v1/articles/2')
+      .set('user-auth-token', token)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(404);
+        expect(res.body.status).to.equal(404);
+        done();
+      });
+  });
+});

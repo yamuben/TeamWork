@@ -195,6 +195,28 @@ static post_comment = (req, res) => {
   });
 }
 
+// ...........................................................
+static view_article=(req, res) => {
+  let { articleId } = req.params;
+  articleId = articleId.trim();
 
+
+  const art = articles.sort((a, b) => (b.date_integer - a.date_integer));
+  // eslint-disable-next-line no-shadow
+  art.forEach((art) => { delete art.date_integer; });
+
+  const data = art.find(a => a.id === parseInt(articleId, 10));
+  if (!data) {
+    return res.status(404).send({ status: 404, error: 'Id is not found !' });
+  }
+  const comment = comments.filter(a => a.articleId === data.id);
+  // console.log('*********COMMENTS*************');
+  // console.log(comments);
+  return res.status(200).json({
+    status: 200,
+    data,
+    comment,
+  });
+}
 }
 export default { articleController, articles };
