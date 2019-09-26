@@ -10,7 +10,6 @@ import users from '../model/users';
 import generateToken from '../helpers/tokens';
 import articles from '../model/articles';
 
-
 const { expect } = chai;
 
 chai.use(chaiHttp);
@@ -69,3 +68,52 @@ describe('POST User will not be able to write new article, api/v1/articles', () 
       });
   });
 });
+
+
+describe('POST User will be able to delete article, api/v1/articles/1', () => {
+  it('should return  article SUCCESFULLY DELETED', (done) => {
+    chai.request(app)
+      .delete('/api/v1/articles/1')
+      .set('user-auth-token', token)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(201);
+        expect(res.body.status).to.equal(201);
+        expect(res.body.message).to.equal('article SUCCESFULLY DELETED');
+        done();
+      });
+  });
+});
+describe('POST User will not be able to delete article, api/v1/articles/2', () => {
+  it('should return not article SUCCESFULLY DELETED', (done) => {
+    chai.request(app)
+      .delete('/api/v1/articles/2')
+      .set('user-auth-token', token)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(404);
+        expect(res.body.status).to.equal(404);
+        expect(res.body.error).to.equal('Id is not found !');
+        done();
+      });
+  });
+});
+
+describe('POST User will  be able to write new article, api/v1/articles', () => {
+  it('should return article  successfully Created', (done) => {
+    chai.request(app)
+      .post('/api/v1/articles')
+      .set('user-auth-token', token)
+      .send(articles[0])
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(201);
+        expect(res.body.status).to.equal(201);
+        expect(res.body.message).to.equal('article  successfully Created');
+        expect(res.body.Data.CreatedOn).to.be.a('string');
+        expect(res.body.Data.Title).to.be.a('string');
+        done();
+      });
+  });
+});
+
