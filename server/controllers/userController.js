@@ -37,6 +37,33 @@ class UserController {
       });
     };
 
-    
+    // ........................................
+     // USER LOGIN
+     static signIn = (req, res) => {
+       //
+       const isLogin = (email, password) => users.find(user => (user.email === email)
+      && ((password === user.password)));
+
+
+       if (isLogin(req.body.email, req.body.password)) {
+         const user = users.find(u => (u.email === req.body.email)
+          && (req.body.password === u.password));
+         const token = Token.generateToken(user.id, req.body.email);
+
+
+         return res.status(200).json({
+           status: 200,
+           message: 'user  is successfully logged in',
+           data: {
+             token,
+           },
+         });
+       }
+
+       return res.status(401).json({
+         status: 401,
+         error: 'Invalid Email or Password',
+       });
+     }
 }
 export default { UserController, users };
