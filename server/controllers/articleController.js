@@ -5,7 +5,6 @@ import verifytoken from '../helpers/tokens';
 
 
 const articles = [];
-const comments = [];
 
 
 dotenv.config();
