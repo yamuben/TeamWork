@@ -69,6 +69,39 @@ describe('POST User will not be able to write new article, api/v1/articles', () 
   });
 });
 
+describe('POST User will be able to edit article, api/v1/articles/1', () => {
+  it('should return article article SUCCESFULLY Edited', (done) => {
+    chai.request(app)
+      .patch('/api/v1/articles/1')
+      .set('user-auth-token', token)
+      .send(articles[1])
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal(200);
+        expect(res.body.message).to.equal('article SUCCESFULLY Edited');
+        expect(res.body.Data.Title).to.be.a('string');
+        expect(res.body.Data.Article).to.be.a('string');
+        expect(res.body.Data.Date).to.be.a('string');
+        done();
+      });
+  });
+});
+describe('POST User will not be able to edit article, api/v1/articles/2', () => {
+  it('should return article article SUCCESFULLY Edited', (done) => {
+    chai.request(app)
+      .patch('/api/v1/articles/2')
+      .set('user-auth-token', token)
+      .send(articles[1])
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(404);
+        expect(res.body.status).to.equal(404);
+        expect(res.body.error).to.equal('Id is not found !');
+        done();
+      });
+  });
+});
 
 describe('POST User will be able to delete article, api/v1/articles/1', () => {
   it('should return  article SUCCESFULLY DELETED', (done) => {
@@ -116,4 +149,3 @@ describe('POST User will  be able to write new article, api/v1/articles', () => 
       });
   });
 });
-
