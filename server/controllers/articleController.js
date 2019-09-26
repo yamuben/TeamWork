@@ -145,6 +145,17 @@ static delete_article = (req, res) => {
           });
         };
 
+        // ........................................
+    static getall_article = (req, res) => {
+      const data = articles.sort((a, b) => b.date_integer - a.date_integer);
+      data.forEach((art) => { delete art.date_integer; });
+
+      return res.status(200).json({
+        status: 200,
+        message: 'success',
+        data,
+      });
+    };
 
 // ......................................................
 static post_comment = (req, res) => {

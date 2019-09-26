@@ -202,3 +202,17 @@ describe('POST User will not be able to comment article, api/v1/articles/1/comme
       });
   });
 });
+describe('GET User will be able to view all articles, api/v1/feeds', () => {
+  it('should return article article SUCCESFULLY Edited', (done) => {
+    chai.request(app)
+      .get('/api/v1/feeds')
+      .set('user-auth-token', token)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal(200);
+        expect(res.body.message).to.equal('success');
+        done();
+      });
+  });
+});
