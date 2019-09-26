@@ -84,5 +84,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-- Andela Kigali](https://andela.com/)
+- [Andela Kigali](https://andela.com/)
 
