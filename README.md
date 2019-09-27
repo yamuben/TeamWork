@@ -1,8 +1,8 @@
-# TeamWork
-
 [![Build Status](https://travis-ci.org/yamuben/TeamWork.svg?branch=develop)](https://travis-ci.org/yamuben/TeamWork)
 [![Coverage Status](https://coveralls.io/repos/github/yamuben/TeamWork/badge.svg?branch=develop)](https://coveralls.io/github/yamuben/TeamWork?branch=develop)
 <a href="https://codeclimate.com/github/yamuben/TeamWork/maintainability"><img src="https://api.codeclimate.com/v1/badges/8e802d8b5dfd62e112cf/maintainability" /></a>
+
+# TeamWork
 
 Teamwork is an internal social network for organizations’ employees. The goal of this application is to facilitate more interaction between colleagues and facilitate team bonding.
 
