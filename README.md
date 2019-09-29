@@ -66,6 +66,8 @@ The project is composed of two different parts:
    - Linting Library: [ESLint](https://eslint.org/)
    - Style Guide: [Airbnb](https://github.com/airbnb/javascript)
    - Testing Framework: [Mocha](https://mochajs.org/)
+   - Documentation tools [Swagger](https://andelateamwork.herokuapp.com/api-docs/)
+   - Hosting [Heroku](https://andelateamwork.herokuapp.com)
  - UI Templates
 
    - CSS 
