@@ -6,7 +6,7 @@ export const validsignUp = (req, res, next) => {
     lastName: Joi.string().alphanum().required(),
     email: Joi.string().email().required(),
     password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).min(6).required(),
-    gender: Joi.string().alphanum().required(),
+    gender: Joi.string().valid('male','female').alphanum().required(),
     jobRole: Joi.string().required(),
     department: Joi.string().required(),
     address: Joi.string().required(),
