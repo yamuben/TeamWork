@@ -625,7 +625,7 @@ box-shadow: 8px 8px 8px 8px rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
  /* Remove extra left and right margins, due to padding */
  .row {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   grid-gap: 5px;
   padding-left: 150px;
 }
