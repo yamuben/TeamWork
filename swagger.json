@@ -1,0 +1,469 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"description": "Teamwork is an internal social network for organizations’ Users. The goal of this application is to facilitate more interaction between colleagues and facilitate team bonding.",
+		"version": "1.0.0",
+		"title": "Team Work",
+		"termsOfService": "http://swagger.io/terms/",
+		"contact": {
+			"email": "yamubbenjamin@gmail.com"
+		},
+		"license": {
+			"name": "MIT",
+			"url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+		}
+	},
+	"host": "andelateamwork.herokuapp.com",
+	"basePath": "/api/v1",
+	"tags": [
+		{
+			"name": "Employee",
+			"description":"signup,login"
+		},
+		{
+			"name": "Article",
+			"description":"Add new article,Delete article,Edit article, Comment on article, View All articles, View specific article"
+		}
+	],
+	"schemes": [
+
+		"http"
+	],
+	"paths": {
+		"/auth/signup": {
+			"post": {
+				"tags": [
+					"Employee"
+				],
+				"summary": "Create user account",
+				"description": "this endpoint will will be used to create a new account",
+				"operationId": "adduser",
+				"consumes": [
+					"application/json",
+					"application/xml"
+				],
+				"produces": [
+					"application/xml",
+					"application/json"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "User object that nedded to create account",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/signup"
+						}
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "user Created successfully"
+					},
+					"401": {
+						"description": "Email is already exist!"
+					},
+					"400": {
+						"description": "Bad request"
+					}
+				}
+			}
+
+		},
+		"/auth/signin": {
+			"post": {
+				"tags": [
+					"Employee"
+				],
+				"summary": "user signin",
+				"description": "this endpoint a registered user can be able to sign in",
+				"operationId": "signin",
+				"consumes": [
+					"application/json",
+					"application/xml"
+				],
+				"produces": [
+					"application/json",
+					"application/xml"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "user's object that is needed to sign in a user'",
+						"required": true,
+						"schema": {
+	 
+						"$ref": "#/definitions/signin"
+							
+						}
+					}
+					
+				],
+				"responses": {
+					"200": {
+						"description": "user  is successfully logged in"
+					},
+					"400": {
+						"description": "\"email\" or password is not allowed to be empty"
+					},
+					"401": {
+						"description": "Invalid Email or Password"
+					}		
+				}
+			}
+		},
+		"/articles": {
+			"post": {
+				"tags": [
+					"Article"
+				],
+				"summary": "will  be able to write new article",
+				"description": " User will  be able to write and post new article",
+				"operationId": "newArticle",
+				"produces": [
+					"application/json",
+					"application/xml"
+				],
+				"parameters": [
+					{
+						"name": "user-auth-token",
+						"in": "header",
+						"description": "the token of the user should be valid to access write aritcle",
+						"required": true,
+						"type": "string"
+
+					},
+					{
+						"in": "body",
+						"name": "body",
+						"description": "write article title and article message",
+						"schema": {
+							"$ref": "#/definitions/articles"
+						}
+
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "article  successfully Created"
+
+					},
+					"401": {
+						"description": "You are not a user"
+					},
+					"404": {
+						"description": "invalid token"
+					}
+				}
+				
+			}
+		},
+		"/articles/{articleId}/comments": {
+			"post": {
+				"tags": [
+					"Article"
+				],
+				"summary": "Comment on specific article",
+				"description": "User will be able to comment article ",
+				"operationId": "commentArticle",
+				"produces": [
+					"application/json",
+					"application/xml"
+				],
+				"parameters": [
+					{
+						"name": "user-auth-token",
+						"in": "header",
+						"description": "the token of the user should be valid to access write aritcle",
+						"required": true,
+						"type": "string"
+
+					},
+					{
+						"name": "articleId",
+						"in": "path",
+						"description": "id of the article to be commented",
+						"required": true,
+						"type": "integer"
+
+					},
+					{
+						"in": "body",
+						"name": "body",
+						"description": "write article comment message to be posted",
+						"schema": {
+							"$ref": "#/definitions/comment"
+						}
+
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "relevant success message"
+					
+					},
+					"401": {
+						"description": "you are not a user"
+					},
+					"404": {
+						"description": "Id is not found !"
+					}
+				}
+				
+			}
+		},
+		
+		"/feeds": {
+			"get": {
+				"tags": [
+					"Article"
+				],
+				"summary": "View all articles",
+				"description": "User will be able to View all articles",
+				"operationId": "viewArticles",
+				"produces": [
+					"application/json",
+					"application/xml"
+				],
+				"parameters": [
+					{
+						"name": "user-auth-token",
+						"in": "header",
+						"description": "the token of the user should be valid to access write aritcle",
+						"required": true,
+						"type": "string"
+
+					}				],
+				"responses": {
+					"201": {
+						"description": "success"
+					
+					}
+				}
+				
+			}
+		},
+		"/articles/{articleId}": {
+			"patch": {
+				"tags": [
+					"Article"
+				],
+				"summary": "edit article",
+				"description": "User will be able to edit article ",
+				"operationId": "editArticle",
+				"produces": [
+					"application/json",
+					"application/xml"
+				],
+				"parameters": [
+					{
+						"name": "user-auth-token",
+						"in": "header",
+						"description": "the token of the user should be valid to access write aritcle",
+						"required": true,
+						"type": "string"
+
+					},
+					{
+						"name": "articleId",
+						"in": "path",
+						"description": "id of the article to be edited",
+						"required": true,
+						"type": "integer"
+
+					},
+					{
+						"in": "body",
+						"name": "body",
+						"description": "write article title and article message to be updated",
+						"schema": {
+							"$ref": "#/definitions/articles"
+						}
+
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "article SUCCESFULLY Edited"
+					
+					},
+					"401": {
+						"description": "you are not a user"
+					},
+					"404": {
+						"description": "Id is not found !"
+					},
+					"500": {
+						"description": "server not found"
+					}
+				}
+				
+			},
+
+			"delete": {
+				"tags": [
+					"Article"
+				],
+				"summary": "delete specific article",
+				"description": "User will be able to delete article ",
+				"operationId": "deleteArticle",
+				"produces": [
+					"application/json",
+					"application/xml"
+				],
+				"parameters": [
+					{
+						"name": "user-auth-token",
+						"in": "header",
+						"description": "the token of the user should be valid to access write aritcle",
+						"required": true,
+						"type": "string"
+
+					},
+					{
+						"name": "articleId",
+						"in": "path",
+						"description": "id of the article to be deleted",
+						"required": true,
+						"type": "integer"
+
+					}				],
+				"responses": {
+					"201": {
+						"description": "article SUCCESFULLY DELETED"
+					
+					},
+					"404": {
+						"description": "Id is not found !"
+					}
+				}
+				
+			},
+
+			"get": {
+				"tags": [
+					"Article"
+				],
+				"summary": "view specific article and ts comments",
+				"description": "User will be able to iew specific article and ts comments ",
+				"operationId": "viewArticle",
+				"produces": [
+					"application/json",
+					"application/xml"
+				],
+				"parameters": [
+					{
+						"name": "user-auth-token",
+						"in": "header",
+						"description": "the token of the user should be valid to access write aritcle",
+						"required": true,
+						"type": "string"
+
+					},
+					{
+						"name": "articleId",
+						"in": "path",
+						"description": "id of the article to be deleted",
+						"required": true,
+						"type": "integer"
+
+					}				],
+				"responses": {
+					"200 ": {
+						"description": " SUCCESFULLY "
+					
+					},
+					"404": {
+						"description": "Id is not found !"
+					}
+				}
+				
+			}
+		}
+		
+	},
+
+	"definitions": {
+		"signin": {
+			"type": "object",
+			"properties": {
+				"email": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				}
+
+			},
+			"xml": {
+				"name": "User"
+			}
+		},
+		
+		"signup": {
+			"type": "object",
+			"properties": {
+				"firstName": {
+					"type": "string"
+				},
+				"lastName": {
+					"type": "string"
+				},
+				"email": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				},
+				"gender": {
+					"type": "string"
+				},
+				"jobRole":      {
+					"type": "string"	
+				},
+				"department": {
+					"type": "string"
+				},
+				"address": {
+					"type": "string"
+				}
+
+			},
+			"xml": {
+				"name": "User"
+			}
+		},
+		"articles": {
+			"type": "object",
+			"properties": {
+				"title": {
+					"type": "string"
+				},
+				"article": {
+					"type": "string"
+				}
+
+			}
+
+		},
+		"comment": {
+			"type": "object",
+			"properties": {
+				"comment": {
+					"type": "string"
+				}
+
+			}
+
+		}
+
+
+	},
+	"externalDocs": {
+		"description": "Find out more about Swagger",
+		"url": "http://swagger.io"
+	}
+
+}

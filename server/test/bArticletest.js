@@ -70,7 +70,7 @@ describe('POST User will not be able to write new article, api/v1/articles', () 
   });
 });
 
-describe('POST User will be able to edit article, api/v1/articles/1', () => {
+describe('PACTH User will be able to edit article, api/v1/articles/1', () => {
   it('should return article article SUCCESFULLY Edited', (done) => {
     chai.request(app)
       .patch('/api/v1/articles/1')
@@ -88,7 +88,7 @@ describe('POST User will be able to edit article, api/v1/articles/1', () => {
       });
   });
 });
-describe('POST User will not be able to edit article, api/v1/articles/2', () => {
+describe('PATCH User will not be able to edit article, api/v1/articles/2', () => {
   it('should return article article SUCCESFULLY Edited', (done) => {
     chai.request(app)
       .patch('/api/v1/articles/2')
@@ -104,7 +104,7 @@ describe('POST User will not be able to edit article, api/v1/articles/2', () => 
   });
 });
 
-describe('POST User will be able to delete article, api/v1/articles/1', () => {
+describe('POST User will be able to delete article, api/v1/articles/<articleId>', () => {
   it('should return  article SUCCESFULLY DELETED', (done) => {
     chai.request(app)
       .delete('/api/v1/articles/1')
@@ -171,7 +171,7 @@ describe('POST User will be able to comment article, api/v1/articles/1/comments'
   });
 });
 
-describe('POST User will be able to comment article, api/v1/articles/1/comments', () => {
+describe('POST User will not be able to comment article, api/v1/articles/1/comments', () => {
   it('should return article article SUCCESFULLY Edited', (done) => {
     chai.request(app)
       .post('/api/v1/articles/2/comments')
