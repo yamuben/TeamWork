@@ -624,6 +624,7 @@ box-shadow: 8px 8px 8px 8px rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
  .row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+
   grid-gap: 5px;
   padding-left: 50px;
 }
@@ -846,6 +847,7 @@ color:#487eb0;
       .row {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
+
         grid-gap: 5px;
         padding-left: 10px;
 
@@ -859,6 +861,7 @@ color:#487eb0;
     grid-gap: 10px;
     padding-top: 10px;
     padding-left: 10px
+
   }
   }
   /* The Modal (background) */
@@ -1108,6 +1111,7 @@ color:#487eb0;
   }
   .manage-div{
     padding-left: 0px;
+    width: 100%;
   }
   .create-articlee-modal{
     width: 30%; /* Mke 320px for responsiveness*/
@@ -1169,8 +1173,8 @@ color:#487eb0;
   font-size: 15px; text-align: center; padding: 5px;
                         grid-template-columns: repeat(0, 1fr);  width: 100%
     }
-.manage-div{padding: left 0;px;
-width:100%;
+.manage-div{padding: left 0;
+width:95%;
 }
 
 .out-container{
