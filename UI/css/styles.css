@@ -658,6 +658,8 @@ border-radius: 10%;
 float: left;
 width: 90%;
 padding: 0 0px;
+background: rgb(171, 187, 199);
+border-radius: 10%
 }
 .column-articlee-long {
   float: left;
@@ -672,12 +674,12 @@ padding: 0 0px;
   padding: 0 10px;
   }
   .column-articlee-long:hover{
-    background: rgba(204, 204, 204, 0.356);
+    background: rgba(197, 233, 250, 0.356);
     transition: 0.8s;
     cursor: pointer;
   }
 .column-articlee:hover{
-  background: rgba(204, 204, 204, 0.356);
+  background: rgba(185, 205, 250, 0.356);
   transition: 0.8s;
   cursor: pointer;
 }
