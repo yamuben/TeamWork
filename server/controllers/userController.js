@@ -3,7 +3,7 @@ import userdata from '../model/userModel';
 import Token from '../helpers/tokens';
 
 const users = [];
-
+const userProfile =[];
 
 dotenv.config();
 
@@ -25,15 +25,27 @@ class UserController {
 
       const token = Token.generateToken(user.id, user.email);
       users.push(user);
-
-
+      
+         // art.forEach((art) => { delete art.date_integer; });
+       user => {delete user.password;};
+       const Profile = userProfile.find(u => (u.email === req.body.email));
       return res.status(201).json({
         status: 201,
         message: 'user Created successfully',
-        data: {
-          token,
+       
+
+          Id:id, 
+          Firstname: req.body.firstName, 
+          Lastname: req.body.lastName,
+          Email: req.body.email, 
+          Gender: req.body.gender, 
+          Jobrole: req.body.jobRole, 
+          Department: req.body.department,
+          Adress: req.body.address,
+          data: {   token,
 
         },
+
       });
     };
 
