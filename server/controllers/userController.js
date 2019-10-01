@@ -34,15 +34,17 @@ class UserController {
         message: 'user Created successfully',
        
 
-          Id:id, 
-          Firstname: req.body.firstName, 
-          Lastname: req.body.lastName,
-          Email: req.body.email, 
-          Gender: req.body.gender, 
-          Jobrole: req.body.jobRole, 
-          Department: req.body.department,
-          Adress: req.body.address,
-          data: {   token,
+
+          data: {
+            Id:id, 
+            Firstname: req.body.firstName, 
+            Lastname: req.body.lastName,
+            Email: req.body.email, 
+            Gender: req.body.gender, 
+            Jobrole: req.body.jobRole, 
+            Department: req.body.department,
+            Adress: req.body.address,
+            token,
 
         },
 
