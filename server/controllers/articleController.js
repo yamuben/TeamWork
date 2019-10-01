@@ -54,7 +54,10 @@ class articleController {
         message: 'article  successfully Created',
         Data: {
           CreatedOn: createdOn,
+          articleID: art.id,
           Title: art.title,
+          Body: art.article,
+          
         },
       });
     };
