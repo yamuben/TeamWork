@@ -6,8 +6,8 @@ class tokenVerify {
     const token = req.header('user-auth-token');
     if (!token) {
       return res.status(400).send({
-        status: 400,
-        error: 'Provide a Token or check key header',
+        Status: 400,
+        Error: 'Provide a Token or check key header',
       });
     }
     try {
@@ -16,8 +16,8 @@ class tokenVerify {
       // console.log(decode);
       if (!loadedUser) {
         return res.status(401).send({
-          status: 401,
-          error: 'You are not a user',
+          Status: 401,
+          Error: 'You are not a user',
         });
       }
 
@@ -25,8 +25,8 @@ class tokenVerify {
       next();
     } catch (error) {
       return res.status(404).send({
-        status: 404,
-        error: 'invalid token',
+        Status: 404,
+        Error: 'invalid token',
 
       });
     }

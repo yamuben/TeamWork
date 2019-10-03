@@ -18,7 +18,7 @@ app.use(bodyParse.json());
 app.use('/api/v1/auth', employeeroute);
 app.use('/api/v1', articleroute);
 app.use('/', (req, res) => res.status(404).send({
-  status: 404,
+  Status: 404,
   error: 'Route doesn\'t exist',
 }));
 

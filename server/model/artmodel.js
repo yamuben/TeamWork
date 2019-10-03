@@ -6,7 +6,7 @@ dotenv.config();
 class artInfos {
   // ..........................................
   constructor(id, title, article, id_emplo, dateposted, date_integer) {
-    this.id = id;
+    this.articleId = id;
     this.title = title;
     this.article = article;
     this.authorId = id_emplo;

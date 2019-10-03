@@ -16,7 +16,7 @@ export const validsignUp = (req, res, next) => {
   if (result.error !== null) {
     return res.status(400).send(
       {
-        status: 400,
+        Status: 400,
         error: result.error.details[0].message,
       },
     );
@@ -32,7 +32,7 @@ export const validsignIn = (req, res, next) => {
   if (result.error !== null) {
     return res.status(400).send(
       {
-        status: 400,
+        Status: 400,
         error: result.error.details[0].message,
       },
     );

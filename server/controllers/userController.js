@@ -13,7 +13,7 @@ class UserController {
       const isEmailTaken = users.find(user => user.email === req.body.email);
 
       if (isEmailTaken) {
-        return res.status(401).send({ status: 401, Error: 'Email is already exist!' });
+        return res.status(401).send({ Status: 401, Error: 'Email is already exist!' });
       }
       // eslint-disable-next-line new-cap
       const user = new userdata(
@@ -29,11 +29,11 @@ class UserController {
  
        const data = users.find(u => (u.email === req.body.email));
       return res.status(201).json({
-        status: 201,
+        Status: 201,
         Message: 'user Created successfully',
        
         Data: {
-            Id:data.id, 
+            UserId:data.id, 
             Firstname: data.firstname, 
             Lastname: data.lastname,
             Email: data.email, 
@@ -63,7 +63,7 @@ class UserController {
 
 
          return res.status(200).json({
-           status: 200,
+           Status: 200,
            Message: user.email + ' is successfully logged in',
            Data: {
               
@@ -73,7 +73,7 @@ class UserController {
        }
 
        return res.status(401).json({
-         status: 401,
+         Status: 401,
          Error: 'Invalid Email or Password',
        });
      }

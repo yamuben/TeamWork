@@ -45,15 +45,15 @@ class articleController {
       articles.push(art);
       articles.sort((a, b) => b.date_integer - a.date_integer);
 
-      const myarticle = articles.find((u)=>u.id===artid);
+      const myarticle = articles.find((u)=>u.articleId===artid);
       return res.status(201).json({
-        status: 201,
+        Status: 201,
         Message: 'Article  successfully created',
         Data: {
           Title: myarticle.title,
-          Body: myarticle.article,
+          Article: myarticle.article,
           CreatedOn: myarticle.createdOn,
-          ArticleID: myarticle.id,
+          ArticleID: myarticle.articleId,
           
         },
       });
@@ -70,30 +70,30 @@ static delete_article = (req, res) => {
   const token = req.header('user-auth-token');
   const decode = verifytoken.verifyToken(token);
 
-  const article = articles.find(a => a.id === parseInt(articleId, 10));
+  const article = articles.find(a => a.articleId === parseInt(articleId, 10));
   if(!article){
-    return res.status(404).send({ status: 404, error: 'Article id is not found !' });
+    return res.status(404).send({ Status: 404, Error: 'Article id is not found !' });
   }
   const index = articles.indexOf(article);
 
-  const artIdExist = articles.find(i => (i.id === parseInt(articleId))  && (i.authorId === decode.Id));
+  const artIdExist = articles.find(i => (i.articleId === parseInt(articleId))  && (i.authorId === decode.Id));
   if (!artIdExist) {
-    return res.status(401).send({ status: 401, error: 'You are not Authorised on this Article' });
+    return res.status(401).send({ Status: 401, Error: 'You are not Authorised on this Article' });
   }
-  const myarticle = articles.find(u=>(u.id===parseInt(articleId)));
+  const myarticle = articles.find(u=>(u.articleId===parseInt(articleId)));
   console.log(myarticle);
   articles.splice(index, 1);
 
   articles.sort((a, b) => b.date_integer - a.date_integer);
   
   return res.status(201).json({
-    status: 201,
+    Status: 201,
     Message: 'Article deleted successfuly',
     Data: {
       Title: myarticle.title,
-      Body: myarticle.article,
+      Article: myarticle.article,
       CreatedOn: myarticle.createdOn,
-      ArticleID: myarticle.id,
+      ArticleID: myarticle.articleId,
       
     },
 
@@ -106,20 +106,20 @@ static delete_article = (req, res) => {
           const decode = verifytoken.verifyToken(token);
           let { articleId } = req.params;
           articleId = articleId.trim();
-          const article = articles.find(a => a.id === parseInt(articleId, 10));
+          const article = articles.find(a => a.articleId === parseInt(articleId, 10));
           const index = articles.indexOf(article);
 
           if(!article){
-            return res.status(404).send({ status: 404, error: 'Article id is not found !' });
+            return res.status(404).send({ Status: 404, Error: 'Article id is not found !' });
           }
         
       
 
-          const idemployExist = articles.find(i => (i.authorId === decode.Id) && (i.id === index + 1));
+          const idemployExist = articles.find(i => (i.authorId === decode.Id) && (i.articleId === index + 1));
           if (!idemployExist) {
-            return res.status(401).send({ status: 401, error: 'You are not Authorised on this Article' });
+            return res.status(401).send({ Status: 401, Error: 'You are not Authorised on this Article' });
           }
-          const myarticle = articles.find(u=>(u.id===parseInt(articleId)));
+          const myarticle = articles.find(u=>(u.articleId===parseInt(articleId)));
           let date_ob = new Date();
 
           let date = (`0${date_ob.getDate()}`).slice(-2);
@@ -148,13 +148,13 @@ static delete_article = (req, res) => {
           articles.sort((a, b) => b.date_integer - a.date_integer);
           // console.log(articles);
           return res.status(200).json({
-            status: 200,
+            Status: 200,
             Message: 'Article succesfully modified',
             Data: {
               Title: myarticle.title,
-              Body: myarticle.article,
+              Article: myarticle.article,
               CreatedOn: myarticle.createdOn,
-              ArticleID: myarticle.id,
+              ArticleID: myarticle.articleId,
               
 
             },
@@ -163,11 +163,11 @@ static delete_article = (req, res) => {
 
         // ........................................
     static getall_article = (req, res) => {
-      const Data = articles.sort((a, b) => b.date_integer - a.date_integer);
+      const Data =articles.sort((a, b) => b.date_integer - a.date_integer);
+      //const middle = articles.slice(1,articles.length-1);
       Data.forEach((art) => { delete art.date_integer; });
-
       return res.status(200).json({
-        status: 200,
+        Status: 200,
         Message: 'success',
         Data,
       });
@@ -182,12 +182,12 @@ static post_comment = (req, res) => {
   let { articleId } = req.params;
   articleId = articleId.trim();
   articleId = parseInt(articleId, 10);
-  const article = articles.find(a => a.id === articleId);
+  const article = articles.find(a => a.articleId === articleId);
   const index = articles.indexOf(article);
 
-  const articleIdExist = articles.find(i => i.id === index + 1);
+  const articleIdExist = articles.find(i => i.articleId === index + 1);
   if (!articleIdExist) {
-    return res.status(404).send({ status: 404, error: 'Id is not found !' });
+    return res.status(404).send({ Status: 404, Error: 'Id is not found !' });
   }
 
   // eslint-disable-next-line new-cap
@@ -200,14 +200,16 @@ static post_comment = (req, res) => {
 
   const myarticle = comments.find(u => u.comment_id === commId)
   return res.status(200).json({
-    status: 200,
+    Status: 200,
     Message: 'Comment added successfuly',
     Data: {
       Title: article.title,
-      Body: article.article,
+      Article: article.article,
       AuthorId: article.authorId,
-      ArticleID: article.id, 
+      ArticleID: article.articleId, 
       Comment: myarticle.comment,
+      CreatedOn: myarticle.date,
+      CommentId: myarticle.comment_id,
 
     },
   });
@@ -223,15 +225,15 @@ static view_article=(req, res) => {
   // eslint-disable-next-line no-shadow
   art.forEach((art) => { delete art.date_integer; });
 
-  const Data = art.find(a => a.id === parseInt(articleId, 10));
+  const Data = art.find(a => a.articleId === parseInt(articleId, 10));
   if (!Data) {
-    return res.status(404).send({ status: 404, error: 'Id is not found !' });
+    return res.status(404).send({ Status: 404, Error: 'Id is not found !' });
   }
-  const Comment = comments.filter(a => a.articleId === Data.id);
+  const Comment = comments.filter(a => a.articleId === Data.articleId);
   // console.log('*********COMMENTS*************');
   // console.log(comments);
   return res.status(200).json({
-    status: 200,
+    Status: 200,
     Data,
     Comment,
   });

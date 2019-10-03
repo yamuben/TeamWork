@@ -26,7 +26,7 @@ describe('POST sign up successfully, api/v1/auth/signup', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(201);
-        expect(res.body.status).to.equal(201);
+        expect(res.body.Status).to.equal(201);
         done();
       });
   });
@@ -40,7 +40,7 @@ describe('POST sign up successfully, api/v1/auth/signup', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(201);
-        expect(res.body.status).to.equal(201);
+        expect(res.body.Status).to.equal(201);
         done();
       });
   });
@@ -55,7 +55,7 @@ describe('POST sign up NOT successfully, api/v1/auth/signup', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(401);
-        expect(res.body.status).to.equal(401);
+        expect(res.body.Status).to.equal(401);
         done();
       });
   });
@@ -70,7 +70,7 @@ describe('POST sign up NOT successfully, api/v1/auth/signup', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
-        expect(res.body.status).to.equal(400);
+        expect(res.body.Status).to.equal(400);
         done();
       });
   });
@@ -86,7 +86,7 @@ describe('POST sign in successfully, api/v1/auth/signin', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(200);
-        expect(res.body.status).to.equal(200);
+        expect(res.body.Status).to.equal(200);
         done();
       });
   });
@@ -103,7 +103,7 @@ describe('POST sign in not successfully, api/v1/auth/signin', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(401);
-        expect(res.body.status).to.equal(401);
+        expect(res.body.Status).to.equal(401);
         done();
       });
   });
@@ -118,7 +118,6 @@ describe('POST sign in not successfully, api/v1/auth/signin', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
-        expect(res.body.status).to.equal(400);
         done();
       });
   });
@@ -133,7 +132,7 @@ describe('POST sign in not successfully, api/v1/auth/signin', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
-        expect(res.body.status).to.equal(400);
+        expect(res.body.Status).to.equal(400);
         done();
       });
   });
@@ -148,7 +147,7 @@ describe('POST sign in not successfully, api/v1/auth/signin', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
-        expect(res.body.status).to.equal(400);
+        expect(res.body.Status).to.equal(400);
         done();
       });
   });
@@ -164,7 +163,7 @@ describe('POST sign in not successfully, api/v1/auth/signin', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(404);
-        expect(res.body.status).to.equal(404);
+        expect(res.body.Status).to.equal(404);
         done();
       });
   });

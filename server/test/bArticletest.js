@@ -31,7 +31,7 @@ describe('POST User will  be able to write new article, api/v1/articles', () => 
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(201);
-        expect(res.body.status).to.equal(201);
+        expect(res.body.Status).to.equal(201);
         done();
       });
   });
@@ -44,7 +44,7 @@ describe('DELETE User will not be able to delete article, api/v1/articles/2', ()
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(401);
-        expect(res.body.status).to.equal(401);
+        expect(res.body.Status).to.equal(401);
         done();
       });
   });
@@ -58,7 +58,7 @@ describe('POST User will not be able to write new article, api/v1/articles', () 
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(401);
-        expect(res.body.status).to.equal(401);
+        expect(res.body.Status).to.equal(401);
         expect(res.body.error).to.equal('You are not a user');
         done();
       });
@@ -74,7 +74,7 @@ describe('POST User will not be able to write new article, api/v1/articles', () 
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(404);
-        expect(res.body.status).to.equal(404);
+        expect(res.body.Status).to.equal(404);
         expect(res.body.error).to.equal('invalid token');
         done();
       });
@@ -90,7 +90,7 @@ describe('PACTH User will be able to edit article, api/v1/articles/1', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(200);
-        expect(res.body.status).to.equal(200);
+        expect(res.body.Status).to.equal(200);
         done();
       });
   });
@@ -104,7 +104,7 @@ describe('PACTH User will be able to edit article, api/v1/articles/1', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(401);
-        expect(res.body.status).to.equal(401);
+        expect(res.body.Status).to.equal(401);
         done();
       });
   });
@@ -119,7 +119,7 @@ describe('PATCH User will not be able to edit article, api/v1/articles/2', () =>
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(404);
-        expect(res.body.status).to.equal(404);
+        expect(res.body.Status).to.equal(404);
         done();
       });
   });
@@ -133,7 +133,7 @@ describe('DELETE User will be able to delete article, api/v1/articles/<articleId
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(201);
-        expect(res.body.status).to.equal(201);
+        expect(res.body.Status).to.equal(201);
         done();
       });
   });
@@ -146,7 +146,7 @@ describe('DELETE User will not be able to delete article, api/v1/articles/2', ()
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(404);
-        expect(res.body.status).to.equal(404);
+        expect(res.body.Status).to.equal(404);
         done();
       });
   });
@@ -161,7 +161,7 @@ describe('POST User will  be able to write new article, api/v1/articles', () => 
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(201);
-        expect(res.body.status).to.equal(201);
+        expect(res.body.Status).to.equal(201);
         done();
       });
   });
@@ -176,7 +176,7 @@ describe('POST User will be able to comment article, api/v1/articles/1/comments'
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(200);
-        expect(res.body.status).to.equal(200);
+        expect(res.body.Status).to.equal(200);
         done();
       });
   });
@@ -191,7 +191,7 @@ describe('POST User will not be able to comment article, api/v1/articles/1/comme
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(404);
-        expect(res.body.status).to.equal(404);
+        expect(res.body.Status).to.equal(404);
         done();
       });
   });
@@ -206,7 +206,7 @@ describe('POST User will not be able to comment article, api/v1/articles/1/comme
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
-        expect(res.body.status).to.equal(400);
+        expect(res.body.Status).to.equal(400);
         done();
       });
   });
@@ -219,7 +219,7 @@ describe('GET User will be able to view all articles, api/v1/feeds', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(200);
-        expect(res.body.status).to.equal(200);
+        expect(res.body.Status).to.equal(200);
         done();
       });
   });
@@ -233,7 +233,7 @@ describe('GET User will be able to view specific articles, api/v1/articles/3', (
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(200);
-        expect(res.body.status).to.equal(200);
+        expect(res.body.Status).to.equal(200);
         done();
       });
   });
@@ -246,7 +246,7 @@ describe('GET User will be able to view specific articles, api/v1/articles/3', (
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(404);
-        expect(res.body.status).to.equal(404);
+        expect(res.body.Status).to.equal(404);
         done();
       });
   });
