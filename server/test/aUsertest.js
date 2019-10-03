@@ -26,9 +26,21 @@ describe('POST sign up successfully, api/v1/auth/signup', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(201);
-        expect(res.body.status).to.equal(201);
-        expect(res.body.message).to.equal('user Created successfully');
-        expect(res.body.data.token).to.be.a('string');
+        expect(res.body.Status).to.equal(201);
+        done();
+      });
+  });
+});
+describe('POST sign up successfully, api/v1/auth/signup', () => {
+  it('should return signup successful', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .set('Accept', 'application/json')
+      .send(users[9])
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(201);
+        expect(res.body.Status).to.equal(201);
         done();
       });
   });
@@ -43,8 +55,7 @@ describe('POST sign up NOT successfully, api/v1/auth/signup', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(401);
-        expect(res.body.status).to.equal(401);
-        expect(res.body.error).to.equal('Email is already exist!');
+        expect(res.body.Status).to.equal(401);
         done();
       });
   });
@@ -59,7 +70,7 @@ describe('POST sign up NOT successfully, api/v1/auth/signup', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
-        expect(res.body.status).to.equal(400);
+        expect(res.body.Status).to.equal(400);
         done();
       });
   });
@@ -75,9 +86,7 @@ describe('POST sign in successfully, api/v1/auth/signin', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(200);
-        expect(res.body.status).to.equal(200);
-        expect(res.body.message).to.equal('user  is successfully logged in');
-        expect(res.body.data.token).to.be.a('string');
+        expect(res.body.Status).to.equal(200);
         done();
       });
   });
@@ -94,8 +103,7 @@ describe('POST sign in not successfully, api/v1/auth/signin', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(401);
-        expect(res.body.status).to.equal(401);
-        expect(res.body.error).to.equal('Invalid Email or Password');
+        expect(res.body.Status).to.equal(401);
         done();
       });
   });
@@ -110,8 +118,6 @@ describe('POST sign in not successfully, api/v1/auth/signin', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
-        expect(res.body.status).to.equal(400);
-        expect(res.body.error).to.equal('\"email\" is not allowed to be empty');
         done();
       });
   });
@@ -126,8 +132,7 @@ describe('POST sign in not successfully, api/v1/auth/signin', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
-        expect(res.body.status).to.equal(400);
-        expect(res.body.error).to.equal('\"email\" must be a valid email');
+        expect(res.body.Status).to.equal(400);
         done();
       });
   });
@@ -142,8 +147,7 @@ describe('POST sign in not successfully, api/v1/auth/signin', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
-        expect(res.body.status).to.equal(400);
-        expect(res.body.error).to.equal('\"password\" is not allowed to be empty');
+        expect(res.body.Status).to.equal(400);
         done();
       });
   });
@@ -159,8 +163,7 @@ describe('POST sign in not successfully, api/v1/auth/signin', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(404);
-        expect(res.body.status).to.equal(404);
-        expect(res.body.error).to.equal('Route doesn\'t exist');
+        expect(res.body.Status).to.equal(404);
         done();
       });
   });

@@ -6,8 +6,9 @@ dotenv.config();
 class commentsInfo {
   // ..........................................
   constructor(id, comments, articleid, authorId) {
-    this.comment_id = id;
+  
     this.comment = comments;
+    this.comment_id = id;
     this.articleId = articleid;
     this.authorId = authorId;
   }

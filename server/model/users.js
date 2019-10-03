@@ -52,7 +52,16 @@ const users = [
     department: 'software',
     address: 'kigali',
   },
-
+  {
+    firstName: 'iyamuremy',
+    lastName: 'Benjamin',
+    email: 'yaben@andela.cm',
+    password: 'Yamu2211',
+    gender: 'male',
+    jobRole: 'developer',
+    department: 'software',
+    address: 'kigali',
+  },
 
 ];
 export default users;
