@@ -1,7 +1,6 @@
 /* eslint-disable max-len */
 import dotenv from 'dotenv';
 import artInfos from '../model/artmodel';
-import verifytoken from '../helpers/tokens';
 import commentsInfo from '../model/comments_model';
 
 
@@ -14,8 +13,6 @@ dotenv.config();
 class articleController {
     // ....................................
     static new_article = (req, res) => {
-      const token = req.header('user-auth-token');
-      const decode = verifytoken.verifyToken(token);
 
       const artid = articles.length + 1;
 
@@ -38,7 +35,7 @@ class articleController {
       const date_integer = parseInt(year + month + date + hours + minutes + seconds);
       // eslint-disable-next-line new-cap
       const art = new artInfos(
-        artid, req.body.title, req.body.article, decode.Id, createdOn, date_integer,
+        artid, req.body.title, req.body.article, req.user.Id, createdOn, date_integer,
       );
 
 
@@ -67,16 +64,13 @@ static delete_article = (req, res) => {
   articleId = articleId.trim();
 
 
-  const token = req.header('user-auth-token');
-  const decode = verifytoken.verifyToken(token);
-
   const article = articles.find(a => a.articleId === parseInt(articleId, 10));
   if(!article){
     return res.status(404).send({ Status: 404, Error: 'Article id is not found !' });
   }
   const index = articles.indexOf(article);
 
-  const artIdExist = articles.find(i => (i.articleId === parseInt(articleId))  && (i.authorId === decode.Id));
+  const artIdExist = articles.find(i => (i.articleId === parseInt(articleId))  && (i.authorId === req.user.Id));
   if (!artIdExist) {
     return res.status(401).send({ Status: 401, Error: 'You are not Authorised on this Article' });
   }
@@ -102,8 +96,6 @@ static delete_article = (req, res) => {
 // ................................................
 
         static edit_article = (req, res) => {
-          const token = req.header('user-auth-token');
-          const decode = verifytoken.verifyToken(token);
           let { articleId } = req.params;
           articleId = articleId.trim();
           const article = articles.find(a => a.articleId === parseInt(articleId, 10));
@@ -115,7 +107,7 @@ static delete_article = (req, res) => {
         
       
 
-          const idemployExist = articles.find(i => (i.authorId === decode.Id) && (i.articleId === index + 1));
+          const idemployExist = articles.find(i => (i.authorId === req.user.Id) && (i.articleId === index + 1));
           if (!idemployExist) {
             return res.status(401).send({ Status: 401, Error: 'You are not Authorised on this Article' });
           }
@@ -175,8 +167,6 @@ static delete_article = (req, res) => {
 
 // ......................................................
 static post_comment = (req, res) => {
-  const token = req.header('user-auth-token');
-  const decode = verifytoken.verifyToken(token);
 
   const commId = comments.length + 1;
   let { articleId } = req.params;
@@ -192,7 +182,7 @@ static post_comment = (req, res) => {
 
   // eslint-disable-next-line new-cap
   const comm = new commentsInfo(
-    commId, req.body.comment, articleId, decode.Id,
+    commId, req.body.comment, articleId, req.user.Id,
   );
 
   comments.push(comm);
@@ -230,8 +220,7 @@ static view_article=(req, res) => {
     return res.status(404).send({ Status: 404, Error: 'Id is not found !' });
   }
   const Comment = comments.filter(a => a.articleId === Data.articleId);
-  // console.log('*********COMMENTS*************');
-  // console.log(comments);
+
   return res.status(200).json({
     Status: 200,
     Data,

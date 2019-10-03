@@ -21,7 +21,7 @@ class tokenVerify {
         });
       }
 
-
+      req.user =decode;
       next();
     } catch (error) {
       return res.status(404).send({
