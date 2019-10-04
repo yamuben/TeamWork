@@ -3,3 +3,10 @@
 coverage
 node_modules
 package-lock.json
+server
+.babelrc
+.coveralls.yml
+.eslintrc.js
+.travis.yml
+package.json
+swagger.json
