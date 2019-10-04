@@ -94,8 +94,8 @@ const bookarticlee = () => {
 
 
 };
-// View Booking
-const viewBooking = () => {
+// View art
+const viewart = () => {
   document.querySelector('.modal-view').style.display = 'block';
 };
 
@@ -107,10 +107,10 @@ const cancelarticlee = () => {
 const viewUser = () => {
   document.querySelector('.modal-view').style.display = 'block';
 };
-const createBooking = () => {
+const createart = () => {
   document.querySelector('.modal-edit').style.display = 'block';
 };
-const cancelBooking = () => {
+const cancelart = () => {
   document.querySelector('.modal').style.display = 'block';
 };
 

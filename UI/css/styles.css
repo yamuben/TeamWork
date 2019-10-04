@@ -747,7 +747,7 @@ border-radius: 5px;
   justify-content: center;
   
 }
-#bookinginfo{
+#artinfo{
   margin:0 0 50px 100px;
   display: inline;
 }
@@ -959,7 +959,7 @@ color:#487eb0;
     animation-name: animatetop;
     animation-duration: 0.4s
   }
-  .available_booking {
+  .available_art {
     position: relative;
     background-color: #f3f3f3;
     margin: 40px auto;
@@ -1248,7 +1248,7 @@ width:95%;
     
       
     }
-    #bookinginfo{
+    #artinfo{
       margin:0 auto;
       overflow: auto;
     }
@@ -1326,7 +1326,7 @@ width:95%;
  .input-icon-loc{
    width: 10px;
  }
- #bookinginfo{
+ #artinfo{
   margin:10px;
  }
 
@@ -1344,7 +1344,7 @@ width:95%;
    padding: 0px;
    
  }
- .available_booking { width: 80%;}
+ .available_art { width: 80%;}
  .custom-btn{width:130px; font-size: 11px;}
  .create-articlee-modal{width: 320px; margin-bottom: 20px;}
  .custom-table td{ padding: 0px}
